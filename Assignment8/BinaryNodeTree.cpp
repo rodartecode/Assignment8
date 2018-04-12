@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <stdlib.h>
+#include <time.h>
 
 //////////////////////////////////////////////////////////////
 //      Protected Utility Methods Section
@@ -60,6 +62,39 @@ BinaryNode<ItemType>* BinaryNodeTree<ItemType>::balancedAdd(BinaryNode<ItemType>
       return subTreePtr;
    }  // end if
 }  // end balancedAdd
+
+
+template<class ItemType>
+BinaryNode<ItemType>* BinaryNodeTree<ItemType>::randomAdd(BinaryNode<ItemType>* subTreePtr,
+														   BinaryNode<ItemType>* newNodePtr)
+{
+
+	if (subTreePtr == nullptr)
+		return newNodePtr;
+	else
+	{
+		int child = rand() % 2;
+
+		BinaryNode<ItemType>* leftPtr = subTreePtr->getLeftChildPtr();
+		BinaryNode<ItemType>* rightPtr = subTreePtr->getRightChildPtr();
+
+		if (child == 0)
+		{
+			rightPtr = randomAdd(rightPtr, newNodePtr);
+			subTreePtr->setRightChildPtr(rightPtr);
+		}
+		else
+		{
+			leftPtr = randomAdd(leftPtr, newNodePtr);
+			subTreePtr->setLeftChildPtr(leftPtr);
+		}
+	}
+}
+
+
+
+
+
 
 template<class ItemType>
 BinaryNode<ItemType>* BinaryNodeTree<ItemType>::moveValuesUpTree(BinaryNode<ItemType>* subTreePtr)
@@ -208,6 +243,18 @@ void BinaryNodeTree<ItemType>::inorder(void visit(ItemType&), BinaryNode<ItemTyp
    }  // end if
 }  // end inorder
 
+template<class ItemType>
+void BinaryNodeTree<ItemType>::postorder(void visit(ItemType&), BinaryNode<ItemType>* treePtr) const
+{
+	if (treePtr != nullptr)
+	{
+		
+		preorder(visit, treePtr->getLeftChildPtr());
+		preorder(visit, treePtr->getRightChildPtr());
+		ItemType theItem = treePtr->getItem();
+		visit(theItem);
+	}  // end if
+}
 
 //////////////////////////////////////////////////////////////
 //      PUBLIC METHODS BEGIN HERE
@@ -301,7 +348,7 @@ template<class ItemType>
 bool BinaryNodeTree<ItemType>::add(const ItemType& newData)
 {
    BinaryNode<ItemType>* newNodePtr = new BinaryNode<ItemType>(newData);
-   rootPtr = balancedAdd(rootPtr, newNodePtr);
+   rootPtr = randomAdd(rootPtr, newNodePtr);
    return true;
 }  // end add
 
@@ -348,6 +395,13 @@ void BinaryNodeTree<ItemType>::inorderTraverse(void visit(ItemType&)) const
 {
    inorder(visit, rootPtr);
 }  // end inorderTraverse
+
+template<class ItemType>
+void BinaryNodeTree<ItemType>::postorderTraverse(void visit(ItemType&)) const
+{
+	postorder(visit, rootPtr);
+}  // end inorderTraverse
+
 
 
 

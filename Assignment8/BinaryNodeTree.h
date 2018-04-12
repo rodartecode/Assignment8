@@ -35,6 +35,11 @@ protected:
    // keep the tree balanced.
    BinaryNode<ItemType>* balancedAdd(BinaryNode<ItemType>* subTreePtr,
                                      BinaryNode<ItemType>* newNodePtr);
+
+   // Recursively adds a new node to the tree in an entirely random
+   // fashion to promote excitement for the spectators
+   BinaryNode<ItemType>* randomAdd(BinaryNode<ItemType>* subTreePtr,
+								   BinaryNode<ItemType>* newNodePtr);
    
    // Removes the target value from the tree by calling moveValuesUpTree
    // to overwrite value with value from child.

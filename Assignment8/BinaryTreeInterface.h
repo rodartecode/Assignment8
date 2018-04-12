@@ -75,5 +75,6 @@ public:
        or with the data in each visited node. */
    virtual void preorderTraverse(void visit(ItemType&)) const = 0;
    virtual void inorderTraverse(void visit(ItemType&)) const = 0;
+   virtual void postorderTraverse(void visit(ItemType&)) const = 0;
 }; // end BinaryTreeInterface
 #endif
