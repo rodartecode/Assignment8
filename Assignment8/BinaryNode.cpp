@@ -32,7 +32,7 @@ void BinaryNode<ItemType>::setItem(const ItemType& anItem)
 }  // end setItem
 
 template<class ItemType>
-ItemType BinaryNode<ItemType>::getItem() const 
+ItemType BinaryNode<ItemType>::getItem() const
 {
    return item;
 }  // end getItem
@@ -44,13 +44,13 @@ bool BinaryNode<ItemType>::isLeaf() const
 }
 
 template<class ItemType>
-void BinaryNode<ItemType>::setLeftChildPtr(BinaryNode<ItemType>* leftPtr) 
+void BinaryNode<ItemType>::setLeftChildPtr(BinaryNode<ItemType>* leftPtr)
 {
    leftChildPtr = leftPtr;
 }  // end setLeftChildPtr
 
 template<class ItemType>
-void BinaryNode<ItemType>::setRightChildPtr(BinaryNode<ItemType>* rightPtr) 
+void BinaryNode<ItemType>::setRightChildPtr(BinaryNode<ItemType>* rightPtr)
 {
    rightChildPtr = rightPtr;
 }  // end setRightChildPtr
@@ -59,18 +59,16 @@ template<class ItemType>
 BinaryNode<ItemType>* BinaryNode<ItemType>::getLeftChildPtr() const
 {
    return leftChildPtr;
-}  // end getLeftChildPtr		
+}  // end getLeftChildPtr
 
 template<class ItemType>
 BinaryNode<ItemType>* BinaryNode<ItemType>::getRightChildPtr() const
 {
    return rightChildPtr;
-}  // end getRightChildPtr		
+}  // end getRightChildPtr
 
 // End of implementation file.  To get this to compile on hills,
 // add definitions of template types we will use in this .cpp file.
 // (just strings and ints for now, add more types if desired)
 template class BinaryNode<std::string>;
 template class BinaryNode<int>;
-
-
