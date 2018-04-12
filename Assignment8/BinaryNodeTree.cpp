@@ -68,12 +68,12 @@ template<class ItemType>
 BinaryNode<ItemType>* BinaryNodeTree<ItemType>::randomAdd(BinaryNode<ItemType>* subTreePtr,
 														   BinaryNode<ItemType>* newNodePtr)
 {
-
 	if (subTreePtr == nullptr)
 		return newNodePtr;
 	else
 	{
-		int child = rand() % 2;
+		int random = rand();
+		int child = random % 2;
 
 		BinaryNode<ItemType>* leftPtr = subTreePtr->getLeftChildPtr();
 		BinaryNode<ItemType>* rightPtr = subTreePtr->getRightChildPtr();
